@@ -15,20 +15,29 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Moon Miner</title>
+    <title>Mighty Mind</title>
   </head>
   <body class="container-fluid">
     <header class="row">
       <div class="col"></div>
     </header>
-    <main class="row">
-      <div class="col">
-        <img onclick="mine()" src="//placehold.it/400x400" alt="" />
+    <main class="row mt-5">
+      <div class="col-6">
+        <img onclick="sleep()" id="brain-img" src="/brain.png" alt="" />
       </div>
-      <div class="col">
-        <h1>Cheese: <span id="cheese-count"></span></h1>
-        <button onclick="BuyPickaxe()" class="btn btn-warning">
-          Buy Pickaxe <span id="pickaxe"></span>
+      <div class="col-6">
+        <h1>Plasticity: <span id="plasticity-amt"></span></h1>
+        <button onclick="showerThink()" class="btn btn-warning">
+          Shower Think Time <span id="shower"></span>
+        </button>
+        <button onclick="quitFb()" class="btn btn-warning">
+          Quit Facebook <span id="quit-fb"></span>
+        </button>
+        <button onclick="summonYogi()" class="btn btn-success">
+          Summon Yogi <span id="yogi"></span>
+        </button>
+        <button onclick="submersionCBD()" class="btn btn-success">
+          Submersion in CBD Oil <span id="cbd-oil"></span>
         </button>
       </div>
     </main>
