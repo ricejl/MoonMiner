@@ -7,6 +7,11 @@ let clickUpgrades = {
     price: 10,
     quantity: 0,
     multiplier: 1
+  },
+  cart: {
+    price: 25,
+    quantity: 0,
+    multiplier: 5
   }
 };
 
@@ -21,12 +26,9 @@ let automaticUpgrades = {
 //for click multiplier: use for (variable in object) to do this
 
 function mine() {
-  if (clickUpgrades.pickaxes.quantity) {
-    cheese +=
-      clickUpgrades.pickaxes.multiplier * clickUpgrades.pickaxes.quantity;
-  } else {
-    cheese++;
-  }
+  cheese++;
+  clickUpgrades.pickaxes.quantity;
+  cheese += clickUpgrades.pickaxes.multiplier * clickUpgrades.pickaxes.quantity;
   update();
 }
 
@@ -48,6 +50,9 @@ function BuyPickaxe() {
   update();
 }
 
-BuyPickaxe();
+function collectAutoUpgrades() {
+  //iterate over autoUpgrades, total quantity of each autoUpgrade times multiplier, then add that value to cheese resource
+  //setInterval to make sure this occurs every 3 seconds automatically and don't forget to invoke it
+}
 
 update();
