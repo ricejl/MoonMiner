@@ -22,12 +22,12 @@ let clickUpgrades = {
 
 let automaticUpgrades = {
   yogi: {
-    price: 20,
+    price: 25,
     quantity: 0,
     multiplier: 20
   },
   cbdOil: {
-    price: 25,
+    price: 20,
     quantity: 0,
     multiplier: 10
   }
@@ -112,3 +112,4 @@ function startInterval() {
 // }
 
 update();
+startInterval();
