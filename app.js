@@ -81,8 +81,8 @@ function summonYogi() {
     automaticUpgrades.yogi.quantity++;
     plasticity -= automaticUpgrades.yogi.price;
     console.log("yogi (multiplier 20): " + plasticity);
-    clickUpgrades.summonYogi.price += 15;
-    console.log(`current yogi price is now ${clickUpgrades.summonYogi.price}`);
+    automaticUpgrades.yogi.price += 15;
+    console.log(`current yogi price is now ${automaticUpgrades.yogi.price}`);
   }
   // TODO invoke collectAutoUpgrades
   update();
@@ -93,6 +93,8 @@ function submersionCBD() {
     automaticUpgrades.cbdOil.quantity++;
     plasticity -= automaticUpgrades.cbdOil.price;
     console.log("CBD (multiplier 10): " + plasticity);
+    automaticUpgrades.cbdOil.price += 15;
+    console.log(`current yogi price is now ${automaticUpgrades.cbdOil.price}`);
   }
   //   TODO collectAutoUpgrades();
   update();
@@ -107,9 +109,9 @@ function collectAutoUpgrades() {
   //       startInterval();
   //     }
   //   }
-  for (let quantity in automaticUpgrades) {
-    if (automaticUpgrades.hasOwnProperty(quantity)) {
-      console.log(`${automaticUpgrades[quantity]}`);
+  for (let product in automaticUpgrades) {
+    if (product.hasOwnProperty(quantity)) {
+      console.log(`${quantity}`);
       //FIXME (automaticUpgrades[quantity]) returns entire object of relevant quantity
       // FIXME (quantity) returns only the key of relevant quantity
       // FIXME `${automaticUpgrades[quantity]}` returns [object Object]
@@ -119,6 +121,11 @@ function collectAutoUpgrades() {
     if (automaticUpgrades.hasOwnProperty(multiplier)) {
       let thing = automaticUpgrades[multiplier];
       console.log(thing);
+    }
+  }
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      const element = object[key];
     }
   }
 }
