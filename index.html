@@ -18,27 +18,36 @@
     <title>Mighty Mind</title>
   </head>
   <body class="container-fluid">
-    <header class="row">
-      <div class="col"></div>
+    <header class="row mt-3">
+      <div class="col text-center">
+        <h1>Mighty Mind</h1>
+      </div>
     </header>
-    <main class="row mt-5">
-      <div class="col-6">
+    <main class="row pt-3">
+      <div class="col-6 p-3 text-center">
         <img onclick="sleep()" id="brain-img" src="/brain.png" alt="" />
       </div>
-      <div class="col-6">
-        <h1>Plasticity: <span id="plasticity-amt"></span></h1>
-        <button onclick="showerThink()" class="btn btn-warning">
-          Shower Think Time <span id="shower"></span>
-        </button>
-        <button onclick="quitFb()" class="btn btn-warning">
-          Quit Facebook <span id="quit-fb"></span>
-        </button>
-        <button onclick="summonYogi()" class="btn btn-success">
-          Summon Yogi <span id="yogi"></span>
-        </button>
-        <button onclick="submersionCBD()" class="btn btn-success">
-          Submersion in CBD Oil <span id="cbd-oil"></span>
-        </button>
+      <div class="col-6 p-3">
+        <h2>Plasticity: <span id="plasticity-amt"></span></h2>
+        <div class="row">
+            <div class="col">
+<div class="card">
+  <div class="card-body">
+    <button onclick="showerThink()" class="btn btn-warning mt-2">
+      Shower Think Time <span id="shower"></span>
+    </button>
+    <button onclick="quitFb()" class="btn btn-warning mt-2">
+      Quit Facebook <span id="quit-fb"></span>
+    </button>
+    <button onclick="summonYogi()" class="btn btn-success mt-2">
+      Summon Yogi <span id="yogi"></span>
+    </button>
+    <button onclick="submersionCBD()" class="btn btn-success mt-2">
+      Submersion in CBD Oil <span id="cbd-oil"></span>
+    </button>
+    </div>
+  </div>
+</div>
       </div>
     </main>
     <footer class="row">

@@ -52,13 +52,11 @@ function update() {
 
 //use for in loop to iterate over upgrades
 
-// function collectClickUpgrades() {}
-
 function showerThink() {
   if (plasticity >= clickUpgrades.showerThink.price) {
     clickUpgrades.showerThink.quantity++;
     plasticity -= clickUpgrades.showerThink.price;
-    console.log("shower think: " + plasticity);
+    console.log("shower think (multiplier 1): " + plasticity);
   }
   update();
 }
@@ -67,7 +65,7 @@ function quitFb() {
   if (plasticity >= clickUpgrades.quitFb.price) {
     clickUpgrades.quitFb.quantity++;
     plasticity -= clickUpgrades.quitFb.price;
-    console.log("quit fb: " + plasticity);
+    console.log("quit fb (multiplier 5): " + plasticity);
   }
   update();
 }
@@ -76,7 +74,7 @@ function summonYogi() {
   if (plasticity >= automaticUpgrades.yogi.price) {
     automaticUpgrades.yogi.quantity++;
     plasticity -= automaticUpgrades.yogi.price;
-    console.log("yogi: " + plasticity);
+    console.log("yogi (multiplier 20): " + plasticity);
   }
   update();
 }
@@ -85,24 +83,39 @@ function submersionCBD() {
   if (plasticity >= automaticUpgrades.cbdOil.price) {
     automaticUpgrades.cbdOil.quantity++;
     plasticity -= automaticUpgrades.cbdOil.price;
-    console.log("CBD: " + plasticity);
+    console.log("CBD (multiplier 10): " + plasticity);
   }
+  //   collectAutoUpgrades();
   update();
 }
 
 function collectAutoUpgrades() {
   //iterate over autoUpgrades, total quantity of each autoUpgrade times multiplier, then add that value to plasticity resource
   //setInterval to make sure this occurs every 3 seconds automatically and don't forget to invoke it
-  for (let quantity in automaticUpgrades) {
-    if (automaticUpgrades.hasOwnProperty(quantity, multiplier)) {
-      plasticity += automaticUpgrades[quantity] * automaticUpgrades[multiplier];
+  //   for (let quantity in automaticUpgrades) {
+  //     if (automaticUpgrades.hasOwnProperty(quantity, multiplier)) {
+  //       plasticity += automaticUpgrades[quantity] * automaticUpgrades[multiplier];
+  //       startInterval();
+  //     }
+  //   }
+  for (const quantity in automaticUpgrades) {
+    if (automaticUpgrades.hasOwnProperty(quantity)) {
+      console.log(`${automaticUpgrades[quantity]}`);
+      //FIXME returning entire object not just quantity with (automaticUpgrades[quantity])
+      // FIXME returns key with (quantity)
+    }
+  }
+  for (let multiplier in automaticUpgrades) {
+    if (automaticUpgrades.hasOwnProperty(multiplier)) {
+      let thing = automaticUpgrades[multiplier];
+      console.log(thing);
     }
   }
 }
 
 function startInterval() {
   collectionInterval = setInterval(collectAutoUpgrades, 3000);
+  console.log("3 seconds");
 }
 
-// startInterval(); when either quantity of summon yogi or cbd oil is > 0
 update();
