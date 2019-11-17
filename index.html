@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Mighty Mind</title>
   </head>
-  <body class="container-fluid">
+  <body class="container-fluid" onload="startInterval()">
     <header class="row mt-3">
       <div class="col text-center">
         <h1>Mighty Mind</h1>
@@ -33,7 +33,7 @@
             <div class="col">
                 <div class="card">
                   <div class="card-body">
-                    <button onclick="showerThink()" class="btn btn-warning mt-2">
+                    <button onclick="showerThink()" class="btn btn-warning mt-2" id="shower-btn" onmouseover="showBtnDescription()" onmouseover="hideBtnDescription()">
                      +1<i class="fas fa-shower"></i> Shower Think <i class="fas fa-coins"></i><span id="shower"></span>
                     </button>
                     <button onclick="quitFb()" class="btn btn-warning mt-2">
