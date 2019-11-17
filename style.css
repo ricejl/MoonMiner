@@ -3,5 +3,23 @@ body {
 }
 
 #brain-img {
-  max-width: 40vw;
+  max-width: 80vw;
+}
+
+@media only screen and (min-width: 768px) {
+  #brain-img {
+    max-width: 40vw;
+  }
+}
+
+#brain-img:hover {
+  cursor: pointer;
+}
+
+#lotus {
+  max-width: 20px;
+}
+
+.fa-oil-can {
+  color: black;
 }

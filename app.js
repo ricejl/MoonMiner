@@ -44,10 +44,10 @@ function sleep() {
 
 function update() {
   plasticityAmtElem.innerHTML = plasticity;
-  showerElem.innerHTML = clickUpgrades.showerThink.quantity;
-  quitFbElem.innerHTML = clickUpgrades.quitFb.quantity;
-  summonYogiElem.innerHTML = automaticUpgrades.yogi.quantity;
-  submersionCbdElem.innerHTML = automaticUpgrades.cbdOil.quantity;
+  showerElem.innerHTML = `${clickUpgrades.showerThink.price}: ${clickUpgrades.showerThink.quantity}`;
+  quitFbElem.innerHTML = `${clickUpgrades.quitFb.price}: ${clickUpgrades.quitFb.quantity}`;
+  summonYogiElem.innerHTML = `${automaticUpgrades.yogi.price}: ${automaticUpgrades.yogi.quantity}`;
+  submersionCbdElem.innerHTML = `${automaticUpgrades.cbdOil.price}: ${automaticUpgrades.cbdOil.quantity}`;
 }
 
 //use for in loop to iterate over upgrades
@@ -56,7 +56,10 @@ function showerThink() {
   if (plasticity >= clickUpgrades.showerThink.price) {
     clickUpgrades.showerThink.quantity++;
     plasticity -= clickUpgrades.showerThink.price;
-    console.log("shower think (multiplier 1): " + plasticity);
+    clickUpgrades.showerThink.price += 5;
+    console.log(
+      `current showerthink price is now ${clickUpgrades.showerThink.price}`
+    );
   }
   update();
 }
@@ -65,7 +68,10 @@ function quitFb() {
   if (plasticity >= clickUpgrades.quitFb.price) {
     clickUpgrades.quitFb.quantity++;
     plasticity -= clickUpgrades.quitFb.price;
-    console.log("quit fb (multiplier 5): " + plasticity);
+    clickUpgrades.quitFb.price += 10;
+    console.log(
+      `current quitfacebook price is now ${clickUpgrades.quitFb.price}`
+    );
   }
   update();
 }
@@ -75,7 +81,10 @@ function summonYogi() {
     automaticUpgrades.yogi.quantity++;
     plasticity -= automaticUpgrades.yogi.price;
     console.log("yogi (multiplier 20): " + plasticity);
+    clickUpgrades.summonYogi.price += 15;
+    console.log(`current yogi price is now ${clickUpgrades.summonYogi.price}`);
   }
+  // TODO invoke collectAutoUpgrades
   update();
 }
 
@@ -85,7 +94,7 @@ function submersionCBD() {
     plasticity -= automaticUpgrades.cbdOil.price;
     console.log("CBD (multiplier 10): " + plasticity);
   }
-  //   collectAutoUpgrades();
+  //   TODO collectAutoUpgrades();
   update();
 }
 
@@ -98,11 +107,12 @@ function collectAutoUpgrades() {
   //       startInterval();
   //     }
   //   }
-  for (const quantity in automaticUpgrades) {
+  for (let quantity in automaticUpgrades) {
     if (automaticUpgrades.hasOwnProperty(quantity)) {
       console.log(`${automaticUpgrades[quantity]}`);
-      //FIXME returning entire object not just quantity with (automaticUpgrades[quantity])
-      // FIXME returns key with (quantity)
+      //FIXME (automaticUpgrades[quantity]) returns entire object of relevant quantity
+      // FIXME (quantity) returns only the key of relevant quantity
+      // FIXME `${automaticUpgrades[quantity]}` returns [object Object]
     }
   }
   for (let multiplier in automaticUpgrades) {
