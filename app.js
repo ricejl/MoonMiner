@@ -22,12 +22,12 @@ let clickUpgrades = {
 
 let automaticUpgrades = {
   yogi: {
-    price: 25,
+    price: 50,
     quantity: 0,
     multiplier: 20
   },
   cbdOil: {
-    price: 20,
+    price: 25,
     quantity: 0,
     multiplier: 10
   }
@@ -72,7 +72,7 @@ function summonYogi() {
   if (plasticity >= automaticUpgrades.yogi.price) {
     automaticUpgrades.yogi.quantity++;
     plasticity -= automaticUpgrades.yogi.price;
-    automaticUpgrades.yogi.price += 15;
+    automaticUpgrades.yogi.price += 20;
   }
   update();
 }
