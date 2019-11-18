@@ -5,6 +5,9 @@ let quitFbElem = document.querySelector("#quit-fb");
 let summonYogiElem = document.querySelector("#yogi");
 let submersionCbdElem = document.querySelector("#cbd-oil");
 let showerButtonElem = document.querySelector("#shower-btn");
+let quitFbButtonElem = document.querySelector("#fb-btn");
+let yogiButtonElem = document.querySelector("#yogi-btn");
+let cbdButtonElem = document.querySelector("#cbd-btn");
 
 let clickUpgrades = {
   showerThink: {
@@ -42,16 +45,9 @@ function sleep() {
   update();
 }
 
-function update() {
-  plasticityAmtElem.innerHTML = plasticity;
-  showerElem.innerHTML = `${clickUpgrades.showerThink.price}: ${clickUpgrades.showerThink.quantity}`;
-  quitFbElem.innerHTML = `${clickUpgrades.quitFb.price}: ${clickUpgrades.quitFb.quantity}`;
-  summonYogiElem.innerHTML = `${automaticUpgrades.yogi.price}: ${automaticUpgrades.yogi.quantity}`;
-  submersionCbdElem.innerHTML = `${automaticUpgrades.cbdOil.price}: ${automaticUpgrades.cbdOil.quantity}`;
-}
-
 function showerThink() {
   if (plasticity >= clickUpgrades.showerThink.price) {
+    showerButtonElem.removeAttribute("disabled");
     clickUpgrades.showerThink.quantity++;
     plasticity -= clickUpgrades.showerThink.price;
     clickUpgrades.showerThink.price += 5;
@@ -100,6 +96,34 @@ function collectAutoUpgrades() {
 function startInterval() {
   collectionInterval = setInterval(collectAutoUpgrades, 3000);
   console.log("3 seconds");
+}
+
+function update() {
+  plasticityAmtElem.innerHTML = plasticity;
+  showerElem.innerHTML = `${clickUpgrades.showerThink.price}: ${clickUpgrades.showerThink.quantity}`;
+  quitFbElem.innerHTML = `${clickUpgrades.quitFb.price}: ${clickUpgrades.quitFb.quantity}`;
+  summonYogiElem.innerHTML = `${automaticUpgrades.yogi.price}: ${automaticUpgrades.yogi.quantity}`;
+  submersionCbdElem.innerHTML = `${automaticUpgrades.cbdOil.price}: ${automaticUpgrades.cbdOil.quantity}`;
+  if (plasticity < clickUpgrades.showerThink.price) {
+    showerButtonElem.setAttribute("disabled", "true");
+  } else if (plasticity >= clickUpgrades.showerThink.price) {
+    showerButtonElem.removeAttribute("disabled");
+  }
+  if (plasticity < clickUpgrades.quitFb.price) {
+    quitFbButtonElem.setAttribute("disabled", "true");
+  } else if (plasticity >= clickUpgrades.quitFb.price) {
+    quitFbButtonElem.removeAttribute("disabled");
+  }
+  if (plasticity < automaticUpgrades.yogi.price) {
+    yogiButtonElem.setAttribute("disabled", "true");
+  } else if (plasticity >= automaticUpgrades.yogi.price) {
+    yogiButtonElem.removeAttribute("disabled");
+  }
+  if (plasticity < automaticUpgrades.cbdOil.price) {
+    cbdButtonElem.setAttribute("disabled", "true");
+  } else if (plasticity >= automaticUpgrades.cbdOil.price) {
+    cbdButtonElem.removeAttribute("disabled");
+  }
 }
 
 // TODO make button description appear on mouse hover and disappear when mouse is away
