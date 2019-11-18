@@ -14,12 +14,15 @@ let clickUpgrades = {
     price: 10,
     quantity: 0,
     multiplier: 1,
-    description: "Additional +1 to each click."
+    description: "Additional +1 to each click.",
+    button: showerButtonElem
   },
   quitFb: {
     price: 15,
     quantity: 0,
-    multiplier: 5
+    multiplier: 5,
+    description: "Additional +5 to each click.",
+    button: quitFbButtonElem
   }
 };
 
@@ -27,12 +30,16 @@ let automaticUpgrades = {
   yogi: {
     price: 50,
     quantity: 0,
-    multiplier: 20
+    multiplier: 20,
+    description: "Automatically generates +20 every 3 seconds.",
+    button: yogiButtonElem
   },
   cbdOil: {
     price: 25,
     quantity: 0,
-    multiplier: 10
+    multiplier: 10,
+    description: "Automatically generates +10 every 3 seconds.",
+    button: cbdButtonElem
   }
 };
 
@@ -47,7 +54,6 @@ function sleep() {
 
 function showerThink() {
   if (plasticity >= clickUpgrades.showerThink.price) {
-    showerButtonElem.removeAttribute("disabled");
     clickUpgrades.showerThink.quantity++;
     plasticity -= clickUpgrades.showerThink.price;
     clickUpgrades.showerThink.price += 5;
@@ -95,7 +101,6 @@ function collectAutoUpgrades() {
 
 function startInterval() {
   collectionInterval = setInterval(collectAutoUpgrades, 3000);
-  console.log("3 seconds");
 }
 
 function update() {
@@ -104,36 +109,53 @@ function update() {
   quitFbElem.innerHTML = `${clickUpgrades.quitFb.price}: ${clickUpgrades.quitFb.quantity}`;
   summonYogiElem.innerHTML = `${automaticUpgrades.yogi.price}: ${automaticUpgrades.yogi.quantity}`;
   submersionCbdElem.innerHTML = `${automaticUpgrades.cbdOil.price}: ${automaticUpgrades.cbdOil.quantity}`;
-  if (plasticity < clickUpgrades.showerThink.price) {
-    showerButtonElem.setAttribute("disabled", "true");
-  } else if (plasticity >= clickUpgrades.showerThink.price) {
-    showerButtonElem.removeAttribute("disabled");
+  buttonToggle();
+  // if (plasticity < clickUpgrades.showerThink.price) {
+  //   showerButtonElem.setAttribute("disabled", "true");
+  // } else if (plasticity >= clickUpgrades.showerThink.price) {
+  //   showerButtonElem.removeAttribute("disabled");
+  // }
+  // if (plasticity < clickUpgrades.quitFb.price) {
+  //   quitFbButtonElem.setAttribute("disabled", "true");
+  // } else if (plasticity >= clickUpgrades.quitFb.price) {
+  //   quitFbButtonElem.removeAttribute("disabled");
+  // }
+  // if (plasticity < automaticUpgrades.yogi.price) {
+  //   yogiButtonElem.setAttribute("disabled", "true");
+  // } else if (plasticity >= automaticUpgrades.yogi.price) {
+  //   yogiButtonElem.removeAttribute("disabled");
+  // }
+  // if (plasticity < automaticUpgrades.cbdOil.price) {
+  //   cbdButtonElem.setAttribute("disabled", "true");
+  // } else if (plasticity >= automaticUpgrades.cbdOil.price) {
+  //   cbdButtonElem.removeAttribute("disabled");
+  // }
+}
+
+function buttonToggle() {
+  for (let price in clickUpgrades) {
+    if (clickUpgrades.hasOwnProperty(price)) {
+      if (plasticity < clickUpgrades[price].price) {
+        clickUpgrades[price].button.setAttribute("disabled", "true");
+      } else {
+        clickUpgrades[price].button.removeAttribute("disabled");
+      }
+    }
   }
-  if (plasticity < clickUpgrades.quitFb.price) {
-    quitFbButtonElem.setAttribute("disabled", "true");
-  } else if (plasticity >= clickUpgrades.quitFb.price) {
-    quitFbButtonElem.removeAttribute("disabled");
-  }
-  if (plasticity < automaticUpgrades.yogi.price) {
-    yogiButtonElem.setAttribute("disabled", "true");
-  } else if (plasticity >= automaticUpgrades.yogi.price) {
-    yogiButtonElem.removeAttribute("disabled");
-  }
-  if (plasticity < automaticUpgrades.cbdOil.price) {
-    cbdButtonElem.setAttribute("disabled", "true");
-  } else if (plasticity >= automaticUpgrades.cbdOil.price) {
-    cbdButtonElem.removeAttribute("disabled");
+  for (let price in automaticUpgrades) {
+    if (automaticUpgrades.hasOwnProperty(price)) {
+      if (plasticity < automaticUpgrades[price].price) {
+        automaticUpgrades[price].button.setAttribute("disabled", "true");
+      } else {
+        automaticUpgrades[price].button.removeAttribute("disabled");
+      }
+    }
   }
 }
 
+//TODO dry code
 // TODO make button description appear on mouse hover and disappear when mouse is away
-// function showBtnDescription() {
-//   showerButtonElem.innerHTML = clickUpgrades.showerThink.description;
-// }
-
-// function hideBtnDescription() {
-//   showerButtonElem.innerHTML = "";
-// }
+// TODO add animation to brain on each click
 
 update();
 startInterval();

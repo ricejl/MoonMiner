@@ -4,6 +4,7 @@ body {
 
 #brain-img {
   max-width: 80vw;
+  animation: bounce 500ms ease-in backwards;
 }
 
 @media only screen and (min-width: 768px) {
@@ -15,6 +16,22 @@ body {
 #brain-img:hover {
   cursor: pointer;
 }
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateZ(-20%) rotate(5deg);
+  }
+  50% {
+    transform: translateZ(-50%);
+  }
+}
+
+/* #brain-img:active {
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-in;
+  animation-duration: 500ms;
+} */
 
 #lotus {
   max-width: 20px;
