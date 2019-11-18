@@ -110,26 +110,6 @@ function update() {
   summonYogiElem.innerHTML = `${automaticUpgrades.yogi.price}: ${automaticUpgrades.yogi.quantity}`;
   submersionCbdElem.innerHTML = `${automaticUpgrades.cbdOil.price}: ${automaticUpgrades.cbdOil.quantity}`;
   buttonToggle();
-  // if (plasticity < clickUpgrades.showerThink.price) {
-  //   showerButtonElem.setAttribute("disabled", "true");
-  // } else if (plasticity >= clickUpgrades.showerThink.price) {
-  //   showerButtonElem.removeAttribute("disabled");
-  // }
-  // if (plasticity < clickUpgrades.quitFb.price) {
-  //   quitFbButtonElem.setAttribute("disabled", "true");
-  // } else if (plasticity >= clickUpgrades.quitFb.price) {
-  //   quitFbButtonElem.removeAttribute("disabled");
-  // }
-  // if (plasticity < automaticUpgrades.yogi.price) {
-  //   yogiButtonElem.setAttribute("disabled", "true");
-  // } else if (plasticity >= automaticUpgrades.yogi.price) {
-  //   yogiButtonElem.removeAttribute("disabled");
-  // }
-  // if (plasticity < automaticUpgrades.cbdOil.price) {
-  //   cbdButtonElem.setAttribute("disabled", "true");
-  // } else if (plasticity >= automaticUpgrades.cbdOil.price) {
-  //   cbdButtonElem.removeAttribute("disabled");
-  // }
 }
 
 function buttonToggle() {
@@ -153,9 +133,8 @@ function buttonToggle() {
   }
 }
 
-//TODO dry code
+//TODO dry code - can add automatic true/false and make purchasables into single dictionary
 // TODO make button description appear on mouse hover and disappear when mouse is away
-// TODO add animation to brain on each click
 
 update();
 startInterval();

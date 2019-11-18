@@ -4,7 +4,6 @@ body {
 
 #brain-img {
   max-width: 80vw;
-  animation: bounce 500ms ease-in backwards;
 }
 
 @media only screen and (min-width: 768px) {
@@ -13,18 +12,22 @@ body {
   }
 }
 
-#brain-img:hover {
-  cursor: pointer;
+#brain-img:active {
+  animation: bounce 500ms ease-in backwards;
 }
 
 @keyframes bounce {
   0%,
   100% {
-    transform: translateZ(-20%) rotate(5deg);
+    transform: translateY(-5%) rotate(5deg);
   }
   50% {
-    transform: translateZ(-50%);
+    transform: translateY(-10%);
   }
+}
+
+#brain-img:hover {
+  cursor: pointer;
 }
 
 /* #brain-img:active {
